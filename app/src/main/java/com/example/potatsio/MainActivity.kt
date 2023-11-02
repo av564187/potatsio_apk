@@ -14,16 +14,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val uri = Uri.parse("content://com.example.charlitaeko.SuanfonsonProvider/files/../shared_prefs/")
+        val uriC = Uri.parse("content://com.example.charlitaeko.SuanfonsonProvider/files/../shared_prefs/")
 
-        val CountryContentProvider = uri
         var pwd: String? = null
-        val c = contentResolver.query(CountryContentProvider, null, null, null, null)
+        val c = contentResolver.query(uriC, null, null, null, null)
         c?.use {
             while (it.moveToNext()) {
                 pwd = it.getString(it.getColumnIndex("file_content"))
             }
-            Log.i("MainActivity", "Archivo Extraido: $pwd")
+            Log.i("MainActivity", "Archivo Extraido:" +
+                    "" +
+                    "" +
+                    "" +
+                    " $pwd" +
+                    "" +
+                    "" +
+                    "")
         }
     }
 }
